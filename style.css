@@ -26,13 +26,15 @@ body {
   font-family: var(--site-font);
   color: var(--text-main);
   background-image: url('1.2.png');
-  background-size: cover;
+  background-size: contain;
   background-position: center top;
   background-attachment: scroll;
   background-repeat: no-repeat;
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 body::before {
@@ -42,7 +44,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(28, 37, 65, 0.45) 0%, rgba(11, 19, 43, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(28, 37, 65, 0.25) 0%, rgba(11, 19, 43, 0.25) 100%);
   z-index: -1;
   pointer-events: none;
 }
@@ -346,8 +348,8 @@ ul {
 .legend-section {
   padding: 120px 0;
   background-color: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .legend-header {
@@ -568,8 +570,8 @@ ul {
 .code-section {
   padding: 120px 0;
   background-color: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .code-header {
@@ -848,5 +850,188 @@ ul {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+  }
+
+  .footer-content {
+    gap: 50px;
+  }
+
+  .today-card {
+    padding: 50px 30px;
+    min-height: 250px;
+  }
+
+  .legend-section,
+  .code-section {
+    padding: 80px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .stat-number {
+    font-size: 4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 15px 35px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Optimization - Small devices */
+@media (max-width: 480px) {
+  body {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero {
+    min-height: 600px;
+    padding: 0 10px;
+  }
+
+  .hero-content {
+    padding-top: 80px;
+  }
+
+  .hero-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .legend-section,
+  .code-section {
+    padding: 60px 0;
+  }
+
+  .legend-header {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+  }
+
+  .legend-description {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .stats-grid {
+    gap: 30px;
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+  }
+
+  .today-card {
+    padding: 40px 25px;
+    min-height: 220px;
+  }
+
+  .card-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .card-content h3 {
+    font-size: 1.3rem;
+    max-width: 100%;
+  }
+
+  .rule-item {
+    padding: 25px 15px;
+  }
+
+  .rule-title {
+    font-size: 1rem;
+  }
+
+  .rule-desc {
+    font-size: 0.9rem;
+  }
+
+  .footer {
+    padding-top: 60px;
+  }
+
+  .footer-content {
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+
+  .footer-cta {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .footer-logo {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+  }
+
+  .footer-links {
+    gap: 12px 30px;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+  }
+
+  .phone {
+    font-size: 1.1rem !important;
+  }
+
+  .btn {
+    padding: 14px 30px;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  .nav-btn {
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+
+  .logo-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  .hero {
+    min-height: -webkit-fill-available;
   }
 }
