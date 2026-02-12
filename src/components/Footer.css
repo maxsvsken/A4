@@ -1,0 +1,135 @@
+.footer {
+    background-color: #1e2a45;
+    color: var(--white);
+    padding-top: 100px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 100px;
+}
+
+.footer-logo {
+    width: 60px;
+    height: 60px;
+    background: rgba(58, 134, 255, 0.1);
+    border: 2px solid var(--accent-blue);
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 50px;
+    font-family: var(--header-font);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.footer-logo:hover {
+    background: var(--accent-blue);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 18px 50px;
+    justify-content: start;
+}
+
+.footer-links a {
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.85;
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-blue);
+    transition: width 0.3s ease;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: var(--accent-blue);
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-cta {
+    font-family: var(--header-font);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact-info p {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+    opacity: 0.95;
+}
+
+.phone {
+    font-weight: 700;
+    font-size: 1.3rem !important;
+}
+
+.telegram-icon {
+    display: inline-flex;
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(58, 134, 255, 0.1);
+    border: 2px solid var(--accent-blue);
+    border-radius: 0;
+    transition: all 0.3s ease;
+    color: var(--white);
+}
+
+.telegram-icon:hover {
+    background: var(--accent-blue);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 0;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: left;
+    }
+
+    .footer-right {
+        text-align: left;
+    }
+
+    .footer-cta {
+        font-size: 2.2rem;
+    }
+}

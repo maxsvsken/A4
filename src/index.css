@@ -1,0 +1,22 @@
+:root {
+  --primary-dark: #121826;
+  --primary-blue: #1e3a8a;
+  --accent-blue: #3b82f6;
+  --bg-light: #f3f4f6;
+  --text-main: #111827;
+  --site-font: 'Manrope', sans-serif;
+  --header-font: 'Oswald', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--site-font);
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
