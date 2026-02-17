@@ -906,6 +906,18 @@ ul {
     width: 300px;
     height: 300px;
     border-radius: 40px;
+    box-shadow: 0 20px 80px -20px rgba(0, 0, 0, 0.8);
+    /* Removed inset shadow */
+  }
+
+  .prism-cube::after {
+    border-radius: 42px;
+    /* 40px + 2px offset for correct outline */
+  }
+
+  .prism-edge {
+    display: none;
+    /* Hide edge highlight on mobile */
   }
 
   .prism-text {
