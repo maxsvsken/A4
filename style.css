@@ -49,8 +49,53 @@ body {
   overflow-x: hidden;
   padding-top: var(--header-height);
   /* Ensure content starts below header */
+}
 
+/* Premium Background Lines Animation */
+.bg-lines {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.15;
+  /* Barely visible */
+}
 
+.bg-line {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0) 20%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 80%,
+      transparent 100%);
+  animation: lineFlow 12s infinite ease-in-out;
+}
+
+@keyframes lineFlow {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }
 
 a {
@@ -948,7 +993,10 @@ ul {
 /* Apply "Special Purpose" Animation to All Headings */
 .h2,
 .h3 {
-  background: linear-gradient(110deg, #FAFAF5 45%, #4c6ef5 50%, #FAFAF5 55%);
+  background: linear-gradient(110deg,
+      #1a244f 45%,
+      #4c6ef5 50%,
+      #1a244f 55%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
