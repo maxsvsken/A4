@@ -35,6 +35,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  /* Prevents anchor links from hiding under header */
 }
 
 body {
@@ -45,6 +47,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  padding-top: var(--header-height);
+  /* Ensure content starts below header */
+
 
 }
 
@@ -543,11 +548,25 @@ ul {
 }
 
 /* Cards */
+/* Cards */
 .card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
+  /* Prism-like Shimmer */
+  background: #0a0a0a;
+  background-image:
+    linear-gradient(110deg, transparent 40%, rgba(76, 110, 245, 0.1) 50%, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(45, 125, 255, 0.05), transparent 50%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 125% 0, 0 0;
+  animation: shimmer-prism 10s infinite linear;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Thin white line */
   padding: 50px 40px;
   transition: all 0.4s ease;
+  border-radius: 20px;
+  /* Standardized uniform radius */
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -593,15 +612,26 @@ ul {
 }
 
 .rule {
-  display: flex;
-  flex-direction: column;
+  /* Prism-like Shimmer */
+  background: #0a0a0a;
+  background-image:
+    linear-gradient(110deg, transparent 40%, rgba(76, 110, 245, 0.1) 50%, transparent 60%),
+    radial-gradient(circle at 100% 0%, rgba(45, 125, 255, 0.05), transparent 50%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 125% 0, 0 0;
+  animation: shimmer-prism 10s infinite linear;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  /* Thin white line */
   padding: 40px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius);
+  border-radius: 20px;
+  /* Standardized uniform radius */
   transition: all 0.3s ease;
-  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
 }
+
+
 
 .rule:hover {
   background: rgba(255, 255, 255, 0.05);
@@ -759,12 +789,65 @@ ul {
   }
 
   .nav {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .nav.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .nav__link {
+    font-size: 24px;
+    font-family: var(--font-serif);
   }
 
   .burger {
-    display: block;
-    /* If we kept burger logic, though not in this request's simple header */
+    display: flex;
+    z-index: 101;
+    /* Above nav overlay */
+    position: relative;
+    background: transparent;
+    border: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .burger__line {
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-main);
+    transition: all 0.3s ease;
+  }
+
+  /* Burger Animation State */
+  .nav.is-open~.burger .burger__line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .nav.is-open~.burger .burger__line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav.is-open~.burger .burger__line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
   }
 
   .legend,
@@ -784,6 +867,79 @@ ul {
   }
 
   .rule {
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 1fr;
+    /* Stack rule number and text */
+    text-align: center;
+    gap: 10px;
   }
+}
+
+/* Mobile Specific (Phones) */
+@media (max-width: 600px) {
+  :root {
+    --container: 100%;
+    --header-height: 70px;
+  }
+
+  .section {
+    padding: 60px 0;
+    /* Reduce vertical spacing */
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+
+  .hero__title {
+    font-size: 32px;
+    /* Smaller title */
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+  }
+
+  /* Responsive Prism */
+  .prism-cube {
+    width: 300px;
+    height: 300px;
+    border-radius: 40px;
+  }
+
+  .prism-text {
+    font-size: 140px;
+    /* Scale text */
+  }
+
+  .card,
+  .rule {
+    padding: 30px 20px;
+    /* Smaller card padding */
+  }
+
+  .btn {
+    width: 100%;
+    /* Full width buttons */
+  }
+
+  .stat__value {
+    font-size: 48px;
+  }
+
+  .code {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Apply "Special Purpose" Animation to All Headings */
+.h2,
+.h3 {
+  background: linear-gradient(110deg, #FAFAF5 45%, #4c6ef5 50%, #FAFAF5 55%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 10s infinite linear;
 }

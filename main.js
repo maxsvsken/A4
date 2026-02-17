@@ -95,4 +95,26 @@ function initShutterText() {
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
   initShutterText();
+
+  // Sequential Border Flow Observer
+  const flowContainers = document.querySelectorAll('.cards4, .code');
+
+  const flowObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const container = entry.target;
+        const items = container.querySelectorAll('.card, .rule');
+
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.add('border-active');
+          }, index * 400); // 400ms delay between each item
+        });
+
+        flowObserver.unobserve(container); // Run once
+      }
+    });
+  }, { threshold: 0.2 });
+
+  flowContainers.forEach(container => flowObserver.observe(container));
 });
