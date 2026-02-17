@@ -419,6 +419,12 @@ ul {
   margin: 0;
 }
 
+.hero__title .text-gradient {
+  display: inline-block;
+  margin-top: 0.2em;
+  /* Small gap between lines */
+}
+
 .hero__subtitle {
   font-size: 18px;
   line-height: 1.6;
